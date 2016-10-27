@@ -6,6 +6,7 @@ module.exports =
   currentStreak: 0
   reached: false
   maxStreakReached: false
+  target_opacity: 0.5
 
   reset: ->
     @container?.parentNode?.removeChild @container
@@ -48,7 +49,8 @@ module.exports =
 
       @opacityObserver?.dispose()
       @opacityObserver = atom.config.observe 'activate-power-mode.comboMode.opacity', (value) =>
-        @container?.style.opacity = value
+        @target_opacity = value
+      @container?.style.opacity = 0.1
 
     @exclamations.innerHTML = ''
 
@@ -73,6 +75,7 @@ module.exports =
 
     if @currentStreak >= @getConfig("activationThreshold") and not @reached
       @reached = true
+      @container?.style.opacity = @target_opacity
       @container.classList.add "reached"
 
     @refreshStreakBar()
@@ -82,6 +85,7 @@ module.exports =
   endStreak: ->
     @currentStreak = 0
     @reached = false
+    @container?.style.opacity = 0.1
     @maxStreakReached = false
     @container.classList.remove "reached"
     @renderStreak()

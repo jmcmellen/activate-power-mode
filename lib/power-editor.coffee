@@ -61,7 +61,7 @@ module.exports =
   onChange: (e) ->
     spawnParticles = true
     if e.newText
-      spawnParticles = e.newText isnt "\n"
+      spawnParticles = e.newText isnt "\n" and e.newText is 0
       range = e.newRange.end
     else
       range = e.newRange.start
@@ -76,7 +76,7 @@ module.exports =
 
     if spawnParticles and @getConfig "particles.enabled"
       cursor.throttleSpawnParticles screenPosition
-    if @getConfig "screenShake.enabled"
+    if spawnParticles and @getConfig "screenShake.enabled"
       @throttledShake @editorElement
     if @getConfig "playAudio.enabled"
       @throttledPlayAudio()
