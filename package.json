@@ -1,14 +1,14 @@
 {
   "name": "activate-power-mode",
   "main": "./lib/activate-power-mode",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Activate POWER MODE to write your code in style.",
   "keywords": [],
   "repository": "https://github.com/JoelBesada/activate-power-mode",
   "author": "Joel Besada <joel@joelb.me> (http://joelb.me)",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.13.0 <2.0.0"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",

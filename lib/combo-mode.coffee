@@ -54,7 +54,7 @@ module.exports =
 
     @exclamations.innerHTML = ''
 
-    (editorElement.shadowRoot ? editorElement).querySelector(".scroll-view").appendChild @container
+    editorElement.querySelector(".scroll-view").appendChild @container
 
     if @currentStreak
       leftTimeout = @streakTimeout - (performance.now() - @lastStreak)
